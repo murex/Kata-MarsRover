@@ -6,6 +6,7 @@ namespace mars_rover {
 
 std::string receiveCommands(const std::string commands)
 {
+	return "";
 }
 
 } // namespace mars_rover
