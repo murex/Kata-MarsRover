@@ -24,7 +24,7 @@ You can fill it from [here](./QuickRetrospective.md)
 
 ### Style & Duration
 
-- 2-hour [Randori in Pairs](./doc/RandoriInPairs.md)./doc/MobProgramming.md)
+- 2-hours [Randori in Pairs](./doc/RandoriInPairs.md)
 
 ### Topic
 
