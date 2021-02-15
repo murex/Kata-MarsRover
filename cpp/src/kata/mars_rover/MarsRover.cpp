@@ -4,7 +4,7 @@
 namespace kata {
 namespace mars_rover {
 
-void receiveCommands(const std::string commands)
+std::string receiveCommands(const std::string commands)
 {
 }
 

@@ -14,9 +14,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin CACHE PATH "Where to 
 # We use CPM for 3rd-party dependencies management
 include(cmake/CPM.cmake)
 include(cmake/FindGoogleTest.cmake)
-# ApprovalTests (for Golden Master tests) -->
-# Uncomment if the kata is using it. Remove otherwise
-#include(cmake/FindApprovalTests.cmake)
 
 add_library(Kata-MarsRover-shared SHARED)
 
@@ -47,8 +44,6 @@ target_sources(Kata-MarsRover-test
 target_link_libraries(Kata-MarsRover-test
     PRIVATE
         Kata-MarsRover-shared
-        # Uncomment if using ApprovalTests, remove otherwise
-        # ApprovalTests
         gtest_main)
 
 add_test(NAME ctest-Kata-MarsRover COMMAND Kata-MarsRover-test)
@@ -66,7 +61,5 @@ set_property(TARGET Kata-MarsRover-test PROPERTY FOLDER "Kata")
 set_property(TARGET Docs PROPERTY FOLDER "Kata")
 
 set_property(TARGET gtest gtest_main PROPERTY FOLDER "Third-Party/GoogleTest")
-# Uncomment if using ApprovalTests, remove otherwise
-# set_property(TARGET ApprovalTests PROPERTY FOLDER "Third-Party")
 
 set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "CMake Generated")

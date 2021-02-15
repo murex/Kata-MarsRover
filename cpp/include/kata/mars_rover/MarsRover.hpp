@@ -5,7 +5,7 @@
 namespace kata {
 namespace mars_rover {
 
-MARS_ROVER_API void receiveCommands(std::string commands);;
+MARS_ROVER_API std::string receiveCommands(std::string commands);;
 
 } // namespace mars_rover
 } // namespace kata
