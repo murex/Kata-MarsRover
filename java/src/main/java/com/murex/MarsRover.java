@@ -1,3 +1,5 @@
+package com.murex;
+
 class MarsRover {
 
     MarsRover(int x, int y, char direction) {

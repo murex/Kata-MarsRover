@@ -2,6 +2,8 @@
 #include <kata/mars_rover/config.hpp>
 #include <iostream>
 
+namespace com {
+namespace murex {
 namespace kata {
 namespace mars_rover {
 
@@ -16,3 +18,6 @@ public:
 
 } // namespace mars_rover
 } // namespace kata
+} // namespace murex
+} // namespace com
+

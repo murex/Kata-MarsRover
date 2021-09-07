@@ -1,6 +1,8 @@
 
 #include <kata/mars_rover/MarsRover.hpp>
 
+namespace com {
+namespace murex {
 namespace kata {
 namespace mars_rover {
 
@@ -19,3 +21,6 @@ std::string  MarsRover::sendPosition() const
 
 } // namespace mars_rover
 } // namespace kata
+} // namespace murex
+} // namespace com
+
