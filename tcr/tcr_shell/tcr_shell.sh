@@ -22,10 +22,10 @@
 
 set -u
 
-BASE_DIR="$(cd "$(dirname -- "$0")" && pwd)"
-WRAPPER_PATH="${BASE_DIR}/$(basename "$0")"
+LANGUAGE_BASE_DIR="$(cd "$(dirname -- "$0")" && pwd)"
+WRAPPER_PATH="${LANGUAGE_BASE_DIR}/$(basename "$0")"
 COMMAND_ARGS=$*
-SCRIPT_DIR="$(dirname "${BASE_DIR}")/tcr/tcr_shell"
+SCRIPT_DIR="$(dirname "${LANGUAGE_BASE_DIR}")/tcr/tcr_shell"
 
 # ------------------------------------------------------------------------------
 # For POSIX-compliant list manipulation (Cf. https://github.com/Ventto/libshlist)
@@ -97,25 +97,22 @@ tcr_check_inotifywait_availability() {
 # ------------------------------------------------------------------------------
 
 tcr_detect_kata_language() {
-  LANGUAGE=${BASE_DIR##*/}
+  LANGUAGE=${LANGUAGE_BASE_DIR##*/}
+  LANGUAGE_VARIABLES_FILE="${SCRIPT_DIR}/languages/${LANGUAGE}"
 
-  case "${LANGUAGE}" in
-  java)
-    TOOLCHAIN="gradle"
-    WORK_DIR="${BASE_DIR}"
-    SRC_DIRS="$(list "${BASE_DIR}/src/main")"
-    TEST_DIRS="$(list "${BASE_DIR}/src/test")"
-    ;;
-  cpp)
-    TOOLCHAIN="cmake"
-    WORK_DIR="${BASE_DIR}"
-    SRC_DIRS="$(list "${BASE_DIR}/src" "${BASE_DIR}/include")"
-    TEST_DIRS="$(list "${BASE_DIR}/test")"
-    ;;
-  *)
+  if [ -f "${LANGUAGE_VARIABLES_FILE}" ]; then
+    # shellcheck source=languages/java
+    # shellcheck source=languages/cpp
+    . "${LANGUAGE_VARIABLES_FILE}"
+    # defines:
+    #  TOOLCHAIN
+    #  SUPPORTED_TOOLCHAINS
+    #  WORK_DIR
+    #  SRC_DIRS
+    #  TEST_DIRS
+  else
     tcr_error "Unable to detect language"
-    ;;
-  esac
+  fi
 }
 
 # ------------------------------------------------------------------------------
@@ -129,22 +126,13 @@ tcr_detect_running_os() {
   Darwin)
     tcr_check_fswatch_availability
     FS_WATCH_CMD="fswatch -1 -r"
-    CMAKE_BIN_PATH="./cmake/cmake-macos-universal/CMake.app/Contents/bin"
-    CMAKE_CMD="${CMAKE_BIN_PATH}/cmake"
-    CTEST_CMD="${CMAKE_BIN_PATH}/ctest"
     ;;
   Linux)
     tcr_check_inotifywait_availability
     FS_WATCH_CMD="inotifywait -r -e modify"
-    CMAKE_BIN_PATH="./cmake/cmake-linux-x86_64/bin"
-    CMAKE_CMD="${CMAKE_BIN_PATH}/cmake"
-    CTEST_CMD="${CMAKE_BIN_PATH}/ctest"
     ;;
   MINGW64_NT-*)
     FS_WATCH_CMD="${SCRIPT_DIR}/bin/inotify-win.exe -r -e modify"
-    CMAKE_BIN_PATH="./build/cmake/cmake-windows-x86_64/bin"
-    CMAKE_CMD="${CMAKE_BIN_PATH}/cmake.exe"
-    CTEST_CMD="${CMAKE_BIN_PATH}/ctest.exe"
     ;;
   *)
     tcr_error "OS $(OS) is currently not supported"
@@ -204,23 +192,8 @@ tcr_build() {
   tcr_info "Launching Build"
 
   build_rc=0
-  case "${TOOLCHAIN}" in
-  gradle)
-    ./gradlew build -x test
-    build_rc=$?
-    ;;
-  maven)
-    ./mvnw test-compile
-    build_rc=$?
-    ;;
-  cmake)
-    ${CMAKE_CMD} --build build --config Debug
-    build_rc=$?
-    ;;
-  *)
-    tcr_error "Toolchain ${TOOLCHAIN} is not supported"
-    ;;
-  esac
+  ${TCR_BUILD_CMD}
+  build_rc=$?
 
   [ $build_rc -ne 0 ] && tcr_warning "There are build errors! I can't go any further"
   return $build_rc
@@ -234,23 +207,8 @@ tcr_test() {
   tcr_info "Running Tests"
 
   test_rc=0
-  case ${TOOLCHAIN} in
-  gradle)
-    ./gradlew test
-    test_rc=$?
-    ;;
-  maven)
-    ./mvnw test
-    test_rc=$?
-    ;;
-  cmake)
-    ${CTEST_CMD} --output-on-failure --test-dir build --build-config Debug
-    test_rc=$?
-    ;;
-  *)
-    tcr_error "Toolchain ${TOOLCHAIN} is not supported"
-    ;;
-  esac
+  ${TCR_TEST_CMD}
+  test_rc=$?
 
   [ $test_rc -ne 0 ] && tcr_warning "Some tests are failing! That's unfortunate"
   return $test_rc
@@ -296,25 +254,30 @@ tcr_update_toolchain() {
     tcr_error "Toolchain is not specified"
   fi
 
-  case $required_toolchain in
-  gradle | maven)
-    if [ "${LANGUAGE}" = "java" ]; then
-      TOOLCHAIN="${required_toolchain}"
-    else
-      tcr_error "Toolchain ${required_toolchain} is not supported for language ${LANGUAGE}"
-    fi
-    ;;
-  cmake)
-    if [ "${LANGUAGE}" = "cpp" ]; then
-      TOOLCHAIN="${required_toolchain}"
-    else
-      tcr_error "Toolchain ${required_toolchain} is not supported for language ${LANGUAGE}"
-    fi
-    ;;
-  *)
-    tcr_error "Toolchain ${required_toolchain} is not supported"
-    ;;
-  esac
+  list_contains "${required_toolchain}" "${SUPPORTED_TOOLCHAINS}"
+  TOOLCHAIN_NOT_SUPPORTED=$?
+
+  if test ${TOOLCHAIN_NOT_SUPPORTED} -eq 0; then
+    TOOLCHAIN="${required_toolchain}"
+  else
+    tcr_error "Toolchain ${required_toolchain} is not supported for language ${LANGUAGE}"
+  fi
+}
+
+tcr_define_toolchain_commands() {
+  TOOLCHAIN_COMMANDS_FILE="${SCRIPT_DIR}/toolchains/${TOOLCHAIN}"
+
+  if [ -f "${TOOLCHAIN_COMMANDS_FILE}" ]; then
+    # shellcheck source=toolchains/gradle
+    # shellcheck source=toolchains/maven
+    # shellcheck source=toolchains/cmake
+    . "${TOOLCHAIN_COMMANDS_FILE}"
+    # defines:
+    #  TCR_BUILD_CMD
+    #  TCR_TEST_CMD
+  else
+    tcr_error "Could not load toolchain commands file"
+  fi
 }
 
 # ------------------------------------------------------------------------------
@@ -407,9 +370,7 @@ tcr_show_help() {
   tcr_info "                             auto-push is disabled by default"
   tcr_info "  -t, --toolchain TOOLCHAIN  indicate the toolchain to be used by TCR"
   tcr_info "                             supported toolchains:"
-  tcr_info "                             - gradle (java, default)"
-  tcr_info "                             - maven (java)"
-  tcr_info "                             - cmake (C++, default)"
+  tcr_info "`ls ${SCRIPT_DIR}/toolchains | sed 's/^/                              - /'`"
 }
 
 # ------------------------------------------------------------------------------
@@ -450,6 +411,7 @@ set -u
 
 cd "${WORK_DIR}" || exit 1
 
+tcr_define_toolchain_commands
 tcr_detect_git_working_branch
 
 tcr_what_shall_we_do
