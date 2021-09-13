@@ -42,8 +42,8 @@ Designing with TDD
 
 ### Source Files
 
-[![Java](./images/LanguageJava.png)](./java)
-[![C++](./images/LanguageCpp.png)](./cpp)
+- [Java](./java)
+- [C++](./cpp)
 
 ## License
 
