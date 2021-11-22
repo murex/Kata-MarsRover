@@ -1,11 +1,22 @@
 # Mars Rover
 
-[![Kata Image](images/MarsRover.jpg)](https://pixabay.com/fr/photos/mars-mars-rover-voyage-spatial-67522/)
+![Kata Image](images/MarsRover.jpg) <br>
 Image by [WikiImages](https://pixabay.com/fr/users/wikiimages-1897/) on [Pixabay](https://pixabay.com/fr/photos/mars-mars-rover-voyage-spatial-67522/)
 
 ## Description
 
 Available [here](http://kata-log.rocks/mars-rover-kata)
+## Getting Started
+
+### Running the kata using TCR
+
+- [Java](./java/GETTING_STARTED_TCR.md)
+- [C++](./cpp/GETTING_STARTED_TCR.md)
+
+### Running the kata using a standard approach
+
+- [Java](./java/GETTING_STARTED.md)
+- [C++](./cpp/GETTING_STARTED.md)
 
 ## Session Quick Retrospective
 
@@ -19,7 +30,6 @@ You can fill it from [here](./QuickRetrospective.md)
 
 ### General
 
-
 - [TCR (Test && Commit || Revert) wrapper](tcr/TCR.md) utility
 - Handy for any type of turn-based session: [Online Timer](https://agility.jahed.dev/)
 
@@ -27,11 +37,11 @@ You can fill it from [here](./QuickRetrospective.md)
 
 ### Style & Duration
 
-- 2-hours [Randori in Pairs](./doc/RandoriInPairs.md)
+- 2-hour [Randori in Pairs](./doc/RandoriInPairs.md)
 
 ### Topic
 
-Designing with TDD
+- Designing with TDD
 
 ### Focus Points
 
@@ -47,9 +57,9 @@ Designing with TDD
 
 ## License
 
-The `Kata-MarsRover` and the accompanying materials are made available
-under the terms of the MIT License ([here](LICENSE.md)) which accompanies this
-distribution, and is available at the Open Source site [here](https://opensource.org/licenses/MIT)
+`Kata-MarsRover` and the accompanying materials are made available
+under the terms of the [MIT License](./LICENSE.md) which accompanies this
+distribution, and is available at the [Open Source site](https://opensource.org/licenses/MIT)
 
 ## Acknowledgements
 
