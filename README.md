@@ -8,19 +8,12 @@ Image by [WikiImages](https://pixabay.com/fr/users/wikiimages-1897/) on [Pixabay
 Available [here](http://kata-log.rocks/mars-rover-kata)
 ## Getting Started
 
-### Running the kata using TCR
-
-- [Java](./java/GETTING_STARTED_TCR.md)
-- [C++](./cpp/GETTING_STARTED_TCR.md)
-
-### Running the kata using a standard approach
-
-- [Java](./java/GETTING_STARTED.md)
-- [C++](./cpp/GETTING_STARTED.md)
+- [Java](java/GETTING_STARTED.md)
+- [C++](cpp/GETTING_STARTED.md)
 
 ## Session Quick Retrospective
 
-You can fill it from [here](./QuickRetrospective.md)
+You can fill it from [here](QuickRetrospective.md)
 
 ## Useful Links
 
@@ -37,7 +30,7 @@ You can fill it from [here](./QuickRetrospective.md)
 
 ### Style & Duration
 
-- 2-hour [Randori in Pairs](./doc/RandoriInPairs.md)
+- 2-hour [Randori in Pairs](doc/RandoriInPairs.md)
 
 ### Topic
 
@@ -52,18 +45,18 @@ You can fill it from [here](./QuickRetrospective.md)
 
 ### Source Files
 
-- [Java](./java)
-- [C++](./cpp)
+- [Java](java)
+- [C++](cpp)
 
 ## License
 
 `Kata-MarsRover` and the accompanying materials are made available
-under the terms of the [MIT License](./LICENSE.md) which accompanies this
+under the terms of the [MIT License](LICENSE.md) which accompanies this
 distribution, and is available at the [Open Source site](https://opensource.org/licenses/MIT)
 
 ## Acknowledgements
 
-See [ACKNOWLEDGEMENTS.md](./ACKNOWLEDGEMENTS.md) for more information.
+See [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) for more information.
 
 ## Contributors
 
