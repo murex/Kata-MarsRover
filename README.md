@@ -1,11 +1,12 @@
 # Mars Rover
 
 ![Kata Image](images/MarsRover.jpg) <br>
-Image by [WikiImages](https://pixabay.com/fr/users/wikiimages-1897/) on [Pixabay](https://pixabay.com/fr/photos/mars-mars-rover-voyage-spatial-67522/)
+"[Mars Rover Space Travel Rover](https://pixabay.com/photos/mars-mars-rover-space-travel-rover-67522/)" by [WikiImages](https://pixabay.com/users/wikiimages-1897/) is licenced under [Pixabay License](https://pixabay.com/fr/service/license/)
 
 ## Description
 
 Available [here](http://kata-log.rocks/mars-rover-kata)
+
 ## Getting Started
 
 - [Java](java/GETTING_STARTED.md)
