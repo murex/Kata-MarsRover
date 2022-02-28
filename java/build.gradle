@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'java-library'
-    id 'com.adarshr.test-logger' version '3.1.0'
+    id 'com.adarshr.test-logger' version '3.2.0'
 }
 
 java {
@@ -17,6 +17,8 @@ repositories {
 dependencies {
     // JUnit 4
     testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+
+    // Guava utility package
     implementation group: 'com.google.guava', name: 'guava', version: '31.0.1-jre'
 }
 
