@@ -19,7 +19,7 @@ dependencies {
     testImplementation group: 'junit', name: 'junit', version: '4.13.2'
 
     // Guava utility package
-    implementation group: 'com.google.guava', name: 'guava', version: '31.0.1-jre'
+    implementation group: 'com.google.guava', name: 'guava', version: '31.1-jre'
 }
 
 group = 'com.murex.xpcoaching'
