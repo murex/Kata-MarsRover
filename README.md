@@ -1,6 +1,7 @@
 [![Gradle](https://github.com/murex/Kata-MarsRover/actions/workflows/gradle.yml/badge.svg)](https://github.com/murex/Kata-MarsRover/actions/workflows/gradle.yml)
 [![Maven](https://github.com/murex/Kata-MarsRover/actions/workflows/maven.yml/badge.svg)](https://github.com/murex/Kata-MarsRover/actions/workflows/maven.yml)
 [![CMake](https://github.com/murex/Kata-MarsRover/actions/workflows/cmake.yml/badge.svg)](https://github.com/murex/Kata-MarsRover/actions/workflows/cmake.yml)
+[![CMake](https://github.com/murex/Kata-MarsRover/actions/workflows/go.yml/badge.svg)](https://github.com/murex/Kata-MarsRover/actions/workflows/go.yml)
 [![Check Markdown links](https://github.com/murex/Kata-MarsRover/actions/workflows/markdown-link-check.yml/badge.svg)](https://github.com/murex/Kata-MarsRover/actions/workflows/markdown-link-check.yml)
 [![Add contributors](https://github.com/murex/Kata-MarsRover/actions/workflows/contributors.yml/badge.svg)](https://github.com/murex/Kata-MarsRover/actions/workflows/contributors.yml)
 
@@ -17,6 +18,7 @@ Available [here](http://kata-log.rocks/mars-rover-kata)
 
 - [Java](java/GETTING_STARTED.md)
 - [C++](cpp/GETTING_STARTED.md)
+- [Go](go/GETTING_STARTED.md)
 
 ## Session Quick Retrospective
 
@@ -54,6 +56,7 @@ You can fill it from [here](QuickRetrospective.md)
 
 - [Java](java)
 - [C++](cpp)
+- [Go](go)
 
 ## License
 
