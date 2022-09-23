@@ -22,6 +22,16 @@ SOFTWARE.
 
 package mars_rover
 
-func doSomething() int {
-	return 42
+type marsRover struct {
+}
+
+func newMarsRover(x int, y int, direction byte) marsRover {
+	return marsRover{}
+}
+
+func (rover marsRover) receiveCommands(commands string) {
+}
+
+func (rover marsRover) sendPosition() string {
+	return ""
 }

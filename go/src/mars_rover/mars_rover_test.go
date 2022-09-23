@@ -28,5 +28,8 @@ import (
 )
 
 func Test_acceptance_test(t *testing.T) {
-	assert.Equal(t, 42, doSomething())
+	t.Skip("test currently disabled") // Comment or remove this line to enable this test case
+	rover := newMarsRover(10, 10, 'N')
+	rover.receiveCommands("LFFLBRRBBBRFFFLL")
+	assert.Equal(t, "11 8 W", rover.sendPosition())
 }
