@@ -19,6 +19,13 @@
 **/csharp/**/obj/
 **/csharp/**/TestResults/
 
+# Python folders containing generated stuff
+**/venv/
+**/dist/
+**/.pytest_cache/
+**/pytest/
+**/*.egg-info/
+
 # ApprovalTests - generated golden master files
 GoldenMasterTest.*.txt
 *.txt.bak
