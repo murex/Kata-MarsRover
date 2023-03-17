@@ -19,11 +19,11 @@
 # SOFTWARE.
 
 class MarsRover:
-    def __init__(self, x, y, position):
+    def __init__(self, x: int, y: int, position: str) -> None:
         pass
 
-    def receive_commands(self, commands):
+    def receive_commands(self, commands: str) -> None:
         pass
 
-    def send_position(self):
+    def send_position(self) -> str:
         return ''
