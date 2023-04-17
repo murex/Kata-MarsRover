@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2021 Murex
+Copyright (c) 2022 Murex
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,14 +22,13 @@ SOFTWARE.
 
 package com.murex;
 
-import org.junit.Ignore;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 public class MarsRoverTest {
 
-    @Ignore
+    @Disabled
     @Test
     public void acceptance_test() {
         MarsRover rover = new MarsRover(10, 10, 'N');
