@@ -10,19 +10,31 @@ updates:
       interval: "weekly"
 
   # Maintain dependencies for Maven
-  - package-ecosystem: maven
+  - package-ecosystem: "maven"
     directory: "/java"
     schedule:
-      interval: weekly
+      interval: "weekly"
 
   # Maintain dependencies for Gradle
-  - package-ecosystem: gradle
+  - package-ecosystem: "gradle"
     directory: "/java"
     schedule:
-      interval: weekly
+      interval: "weekly"
 
   # Maintain dependencies for Go Modules
-  - package-ecosystem: gomod
+  - package-ecosystem: "gomod"
     directory: "/go"
     schedule:
-      interval: weekly
+      interval: "weekly"
+
+  # Maintain dependencies for Python
+  - package-ecosystem: "pip"
+    directory: "/python"
+    schedule:
+      interval: "weekly"
+
+  # Maintain dependencies for Typescript
+  - package-ecosystem: "npm"
+    directory: "/typescript"
+    schedule:
+      interval: "weekly"
