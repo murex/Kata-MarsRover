@@ -30,6 +30,18 @@
 **/pytest/
 **/*.egg-info/
 
+# Elixir folders containing generated stuff
+**/_build/
+**/cover/
+**/deps/
+**/.fetch
+erl_crash.dump
+*.ez
+
+# PHP folders containing generated stuff
+**/vendor/
+**/.phpunit.cache/*
+
 # ApprovalTests - generated golden master files
 GoldenMasterTest.*.txt
 *.txt.bak

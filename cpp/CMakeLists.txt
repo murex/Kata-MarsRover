@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Murex
+# Copyright (c) 2023 Murex
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@ cmake_minimum_required(VERSION 3.19.3)
 
 project(Kata-MarsRover CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 enable_testing()
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
