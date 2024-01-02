@@ -1,74 +1,47 @@
 # Acknowledgements
 
-This kata uses material from the following third-parties:
+This kata uses material from the following third-parties.
 
 [//]: # (This list includes all the known 3rd parties for all our katas)
+
 [//]: # (This needs to be reduced in each kata repository depending on what is used or not)
 
-[//]: # (Currently used in all katas)
-
-* [inotify-win tool for Windows](https://github.com/thekid/inotify-win), BSD License
-
-* [inotify-tools for Linux](https://github.com/inotify-tools/inotify-tools), GNU General Public License Version 2.0
-
-* [fswatch tool for MacOS](https://github.com/emcrisostomo/fswatch), GNU General Public License Version 3.0
-
-* [POSIX Shell List library](https://github.com/Ventto/libshlist/), MIT License
-  
-[//]: # (Currently used in all java katas)
-
-* [Gradle build tool](https://gradle.org/), Apache License Version 2.0
-
-* [Maven build tool](https://maven.apache.org/), Apache License Version 2.0
-
-* [Maven wrapper](https://github.com/takari/maven-wrapper), Apache License Version 2.0
-
-* [JUnit-4 unit testing framework](https://junit.org/junit4/), Eclipse Public License 1.0
-
-[//]: # (Currently used in all C++ katas)
+## C++ language
 
 * [CMake build tool](https://cmake.org/), BSD License
-
 * [CPM.cmake script](https://github.com/cpm-cmake/CPM.cmake), BSD License
-
 * [GoogleTest testing framework](https://github.com/google/googletest), BSD 3-Clause "New" or "Revised" License
 
-[//]: # (Currently used in all katas using approval tests)
+## Go language
 
-* [ApprovalTest.cpp testing framework](https://github.com/approvals/ApprovalTests.cpp), Apache License Version 2.0
+* [Go](https://github.com/golang/go), BSD 3-Clause "New" or "Revised" License
+* [Testify testing framework](https://github.com/stretchr/testify), MIT License
 
-* [ApprovalTest.java testing framework](https://github.com/approvals/ApprovalTests.java), Apache License Version 2.0
+## Java language
 
-[//]: # (Currently used in all java katas using Cucumber)
+* [Gradle build tool](https://gradle.org/), Apache License Version 2.0
+* [Maven build tool](https://maven.apache.org/), Apache License Version 2.0
+* [JUnit-5 unit testing framework](https://junit.org/junit5/), Eclipse Public License 2.0
+* [Gradle Test Logger Plugin](https://github.com/radarsh/gradle-test-logger-plugin), Apache License Version 2.0
+## Python language
 
-* [Cucumber JVM testing framework](https://github.com/cucumber/cucumber-jvm), MIT License
+* [Python](https://www.python.org/), PSF License Agreement and the Zero-Clause BSD license
+* [setuptools](https://github.com/pypa/setuptools), MIT License
+* [wheel](https://github.com/pypa/wheel), MIT License
+* [pip](https://github.com/pypa/pip), MIT License
+* [pytest](https://github.com/pytest-dev/pytest/), MIT License
+* [pytest-parametrization](https://github.com/singular-labs/parametrization), MIT License
+* [mypy](https://github.com/python/mypy), MIT License
 
-[//]: # (Currently used in all java katas using Spring)
+## Typescript language
 
-* [H2 Database library](https://github.com/h2database/h2database), Mozilla Public License
-  Version 2.0 / Eclipse Public License 1.0
+* [Typescript](https://github.com/microsoft/TypeScript), Apache License Version 2.0
+* [Yarn](https://github.com/yarnpkg/berry), BSD 2-Clause License
+* [jest](https://github.com/jestjs/jest), MIT License
+* [jest-junit](https://github.com/jest-community/jest-junit), Apache License Version 2.0
+* [ts-jest](https://github.com/kulshekhar/ts-jest), MIT License
 
-* [Spring Boot framework](https://github.com/spring-projects/spring-boot), Apache License Version 2.0
-
-* [Spring Data JPA library](https://github.com/spring-projects/spring-data-jpa), Apache License Version 2.0
-
-* [Thymeleaf library](https://github.com/thymeleaf/thymeleaf), Apache License Version 2.0
-
-[//]: # (Currently used in some of the katas)
-
-* [Google guava libraries](https://github.com/google/guava), Apache License Version 2.0
-
-* [Google gson library](https://github.com/google/gson), Apache License Version 2.0
-
-* [JSON for Modern C++ library](https://github.com/nlohmann/json), MIT License
-
-* [jsoup library](https://github.com/jhy/jsoup/), MIT License
+## Other third-parties
 
 * [codingdojo.org katas](https://codingdojo.org/)
-
 * [kata-log.rocks katas](https://kata-log.rocks/)
-
-* [Ugly Trivia kata source code](https://github.com/jbrains/trivia), GNU General Public License Version 3.0
-
-* [Gilded Rose kata source code](https://github.com/emilybache/GildedRose-Refactoring-Kata), MIT License
-
