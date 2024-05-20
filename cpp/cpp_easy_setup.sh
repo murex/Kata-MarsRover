@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 #
-# Copyright (c) 2023 Murex
+# Copyright (c) 2024 Murex
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -48,7 +48,7 @@ MINGW64_NT-*)
     cmake_bin_dir="bin"
     cmake="cmake.exe"
     ctest="ctest.exe"
-    cmake_generator_options="-G \"Visual Studio 16 2019\""
+    cmake_generator_options="-G \"Visual Studio 17 2022\""
     ;;
 *)
     echo "os $(uname -s) is currently not supported."
@@ -59,7 +59,7 @@ esac
 base_dir=$(dirname -- "$0")
 cd "${base_dir}"
 
-cmake_version="3.29.2"
+cmake_version="3.29.3"
 cmake_expected_dir="cmake-${cmake_version}-${os}-${arch}"
 cmake_expected_archive_file="${cmake_expected_dir}.${archive_extension}"
 cmake_archive_url="http://github.com/Kitware/CMake/releases/download/v${cmake_version}/${cmake_expected_archive_file}"
@@ -67,11 +67,10 @@ cmake_home="cmake-${os}-${arch}"
 
 build_dir="build"
 mkdir -p "${build_dir}"
-cd "${build_dir}"
 
-cmake_build_dir="cmake"
-mkdir -p "${cmake_build_dir}"
-cd "${cmake_build_dir}"
+cmake_dir=".cmake"
+mkdir -p "${cmake_dir}"
+cd "${cmake_dir}"
 
 if ! [ -f "${cmake_expected_archive_file}" ]
 then
@@ -98,8 +97,8 @@ fi
 
 cd ..
 
-cmake_bin_path="${cmake_build_dir}/${cmake_home}/${cmake_bin_dir}"
+cmake_bin_path="${cmake_dir}/${cmake_home}/${cmake_bin_dir}"
 
-eval ${cmake_bin_path}/${cmake} "${cmake_generator_options}" -S .. -B .
-${cmake_bin_path}/${cmake} --build . --config Debug
-${cmake_bin_path}/${ctest} --output-on-failure -C Debug
+eval ${cmake_bin_path}/${cmake} "${cmake_generator_options}" -S . -B "${build_dir}"
+${cmake_bin_path}/${cmake} --build "${build_dir}" --config Debug
+${cmake_bin_path}/${ctest} --test-dir "${build_dir}" --output-on-failure --build-config Debug
