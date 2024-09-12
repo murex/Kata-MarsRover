@@ -29,8 +29,18 @@ cd Kata-MarsRover/typescript
 
 ### 3 - Download dependencies
 
+The kata uses `corepack` when configuring `yarn` as
+the package manager to be used. You may need to run the
+following command beforehand to enable it:
+
 ```shell
-yarn install
+corepack enable
+```
+
+To download the dependencies:
+
+```shell
+corepack yarn install
 ```
 
 ## Running the kata
@@ -88,6 +98,7 @@ Here are the main shortcuts available once TCR utility is running:
 | `p` / `P` | Toggle on/off git auto-push                  |
 | `l` / `L` | Pull from remote                             |
 | `s` / `S` | Push to remote                               |
+| `a` / `A` | Abort current command (when in driver role)  |
 | `q` / `Q` | Quit current role / Quit TCR                 |
 | `?`       | List available options                       |
 
