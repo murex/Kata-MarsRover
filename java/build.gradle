@@ -19,7 +19,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.11.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     // Guava utility package
-    implementation group: 'com.google.guava', name: 'guava', version: '33.3.0-jre'
+    implementation group: 'com.google.guava', name: 'guava', version: '33.3.1-jre'
 }
 
 test {
