@@ -42,35 +42,45 @@ For this exercise, you can start with the basic test case for example moving the
 ### Make sure every test case keeps simple (1 assert per test case)
 
 A good practice is to test only one thing per test case, thus only 1 assert per test case.
-Sometimes, when really testing a small isolated function, it can be useful to test different values in one single test case.
+Sometimes, when really testing a small isolated function, it can be useful to test different values in one single test
+case.
 
 ### Maintain the direction
 
-If you notice that the team is changing coding/design direction at every keyboard switch, you can suggest that they align their tasks in a TODO list.
+If you notice that the team is changing coding/design direction at every keyboard switch, you can suggest that they
+align their tasks in a TODO list.
 
 ### About converting cardinal directions (N-W-S-E) type from char to enum
 
-Usually participants at some point are willing to replace representation of cardinal directions (N/W/S/E) from char type to something more elaborate (such as Enums).
+Usually participants at some point are willing to replace representation of cardinal directions (N/W/S/E) from char type
+to something more elaborate (such as Enums).
 
-As this change modifies the signature of the MarsRover constructor (and potentially of some other functions depending on how far they are with the kata), this implies a number of changes that, if not handled carefully, will leave several test cases in the red for some time.
+As this change modifies the signature of the MarsRover constructor (and potentially of some other functions depending on
+how far they are with the kata), this implies a number of changes that, if not handled carefully, will leave several
+test cases in the red for some time.
 
-Recommendation here is to help them proceed incrementally with the changes, __making sure at each step that all their tests keep green__.
+Recommendation here is to help them proceed incrementally with the changes, __making sure at each step that all their
+tests keep green__.
 
 1. Create the enum for N, W, S, E
-1. Create functions allowing to convert from char to enum and the other way around
-1. Using these conversion functions, replace the solution implementation so that it works with enums instead of chars
+2. Create functions allowing to convert from char to enum and the other way around
+3. Using these conversion functions, replace the solution implementation so that it works with enums instead of chars
    (at this stage the constructor and methods signatures should remain unchanged)
-1. Adjust one by one the signature of each implementation function that uses direction as an input parameter or return value,
+4. Adjust one by one the signature of each implementation function that uses direction as an input parameter or return
+   value,
    replacing char type with enum, progressively removing calls to the conversion functions in implementation
    as they become unnecessary.
-1. Finally adjust MarsRover constructor signature (replacing char type to enum for the direction parameter).
+5. Finally adjust MarsRover constructor signature (replacing char type to enum for the direction parameter).
    At this stage test cases should be adjusted as well as they should call MarsRover constructor at some point.
-1. Remove the conversion functions created previously
+6. Remove the conversion functions created previously
 
 Participants may argue that this requires more work than doing all changes in one shot.
 
-- Insist that the most important point is to always keep the tests green. Emphasize that with this approach they are able to commit and deliver their changes at any time, which is not the case when doing big bang refactoring.
-- Remind them that this is a small exercise. We know they would be able to handle this without errors. In real life though, problems can be larger and error prone. By practicing at a small scale, they'll learn how to apply this technique in real life when it makes sense.
+- Insist that the most important point is to always keep the tests green. Emphasize that with this approach they are
+  able to commit and deliver their changes at any time, which is not the case when doing big bang refactoring.
+- Remind them that this is a small exercise. We know they would be able to handle this without errors. In real life
+  though, problems can be larger and error-prone. By practicing at a small scale, they'll learn how to apply this
+  technique in real life when it makes sense.
 
 ### Beware of Test Data Builder temptation in this kata!
 
@@ -84,7 +94,8 @@ Also, indicate that there is another kata session later on focusing on Test Data
 
 ## Advanced Refactoring
 
-Due to having 4 types of commands, there is a high possibility of having a function with a long nested conditional statements (If-Else or Switch Case).
+Due to having 4 types of commands, there is a high possibility of having a function with a long nested conditional
+statements (If-Else or Switch Case).
 
 This section can be refactored by replacing the conditional part with polymorphism!
 
@@ -92,7 +103,7 @@ Of course, the approach is different between Java and C++.
 
 Below is a sample code of the conditional statement in C++:
 
-```c++
+```cpp
 if (commands[i] == 'F')
 {
     std::pair<int, int> newPosition = moveForward(std::pair<int, int>(x, y), direction);
@@ -115,7 +126,7 @@ else
 }
 ```
 
-### Option 1 - ENUMS
+### Option 1 - Enums
 
 Enums can be useful in this case! In Java, enums can have methods, thus, simplifying
 the means of implementing Polymorphism.
@@ -138,18 +149,21 @@ public enum Command {
         @Override
         public Position applyCommand(Position currentPosition) {
             Position newPosition = new Position();
-            ...
-            return new newPosition;
+            //...
+            newPosition.direction = "RIGHT";
+            return newPosition;
         }
-    },
-    ...
+        //...
+    };
+
     public abstract Position applyCommand(Position currentPosition);
 }
 ```
 
 ### Option 2 - Classes
 
-In C++, you can't have methods in Enums. Thus, the above approach will not be possible. You will need to implement polymorphism using classes. The steps to do that are:
+In C++, you can't have methods in Enums. Thus, the above approach will not be possible. You will need to implement
+polymorphism using classes. The steps for achieving that are:
 
 1. Creating a class Command with one method
 2. Having 4 implementations of the 'Command' class (Forward, Backward, Left and Right)
@@ -157,7 +171,7 @@ In C++, you can't have methods in Enums. Thus, the above approach will not be po
 
 Below is a code snippet of the Command and Forward classes!
 
-```c++
+```cpp
 class Command {
 public:
     virtual std::pair<DirectionEnum, std::pair<int, int>> applyCommand(std::pair<DirectionEnum, std::pair<int, int>> currentState) {
@@ -176,13 +190,12 @@ public:
         return newState;
     }
 };
-....
-
+// ...
 ```
 
 Using the above code, our initial conditional statement will be replaced by the following code:
 
-```c++
+```cpp
 Command* command = toCommand(commands[i]);
 std::pair<DirectionEnum, std::pair<int, int>> newState = command->applyCommand(std::pair<DirectionEnum, std::pair<int, int>>(direction, currentPosition));
 x = newState.second.first;
