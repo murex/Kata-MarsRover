@@ -29,7 +29,7 @@ You are given the initial starting point (x,y) of a rover and the direction (N,S
 - Hardcore TDD. No Excuses!
 - Change roles (driver, navigator) every 5 minutes.
 - No red tests while refactoring.
-- Be careful about edge cases and exceptions. We can not afford to lose a mars rover, just because the developers
+- Be careful about edge cases and exceptions. We can not afford to lose a Mars rover, just because the developers
   overlooked a null pointer.
 
 ## Coding Assistant Tips
@@ -56,16 +56,16 @@ To get the best out of Copilot, you can try these:
 
 - Take the opportunity to increase your knowledge on Software Engineering by asking GitHub Copilot to propose
   implementation variants.
-    - Inline chat:
-      ```text
-      Propose 5 different ways to rewrite this code and evaluate each using the perfection game
-      ```
-    - Discuss as a group the proposed answers and agree on the one to pick.
+  - Inline chat:
+    ```text
+    Propose 5 different ways to rewrite this code and evaluate each using the perfection game
+    ```
+  - Discuss as a group the proposed answers and agree on the one to pick.
 - Leverage on copilot to convert your unit tests to parameterized tests.
-    - Experiment with different approaches to parameterized tests, and pick the one you prefer.
-    - You may be tempted to come up with a single parameterized tests for everything. This might hinder test
-      readability. Keep in mind that the intent behind tests is to make them easy to read and understand. Try different
-      approaches to come up with an accurate balance between readability and factorization of test code.
+  - Experiment with different approaches to parameterized tests, and pick the one you prefer.
+  - You may be tempted to come up with a single parameterized tests for everything. This might hinder test
+    readability. Keep in mind that the intent behind tests is to make them easy to read and understand. Try different
+    approaches to come up with an accurate balance between readability and factorization of test code.
 - Experiment various prompts using standard engineering vocabulary and see how it impacts the quality of the
   suggestions (cf. [Refactoring Guru](https://refactoring.guru/) website)
 - Try to do the same refactoring with an IDE-automated refactoring and with GitHub Copilot.
