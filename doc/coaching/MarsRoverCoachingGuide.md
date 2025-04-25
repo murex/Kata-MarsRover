@@ -7,11 +7,18 @@ Unless you're planning to coach on it, you'd better avoid reading what's in ther
 
 */!\ This is work in progress, improvements to this guide are welcome*
 
+## Point of Advice about AI
+
+This kata comes with instructions to use AI tools like GitHub Copilot. Feel free to use them or not when running this
+kata.
+
 ## Main Goal
 
 This problem is a good example of letting the design emerge from TDD.
 In 2 hours, developers will go through TDD, Design, and Code Refactoring.  
 The emerging design is usually simpler than up-front design.
+
+This kata is a good example of how combining TDD and TCR with AI tools can help participants write better code.
 
 ## Typical Plan
 
@@ -44,6 +51,34 @@ For this exercise, you can start with the basic test case for example moving the
 A good practice is to test only one thing per test case, thus only 1 assert per test case.
 Sometimes, when really testing a small isolated function, it can be useful to test different values in one single test
 case.
+
+### Start slow (without AI) and increase its usage progressively
+
+This kata allows to demonstrate that the more examples you give them, the more accurate AI tools will be.
+We recommend encouraging participants to write their first test cases without AI. Then progressively use AI to generate
+the following test cases. For instance, when used properly, AI will generate with high accuracy tests and code for one
+rotation direction based on the available tests and code for the other direction.
+
+### Ask AI to convert the first test cases to parameterized tests
+
+Once the first test cases are written for one specific command, guide participants to ask AI to convert them to
+parameterized tests. This works very well and is a nice way to highlight the inline feature. This is also helpful to the
+majority of people who don't remember the syntax for parameterized tests.
+
+### Enforce that participants should keep control on how to group parameterized tests
+
+AI tends to blindly group test cases together when refactoring to parameterized tests. Insist that participants should
+make sure that tests are grouped in a way that makes sense from feature point of view. This is important to keep the
+tests readable and understandable.
+
+### Leverage on AI to propose different implementation variants
+
+Asking GitHub Copilot to propose different implementation options allowed us to take a step back and discuss which
+option is the most appropriate for the current situation. We believe this can also help juniors in a language to uncover
+and learn different approaches.
+Asking copilot to add evaluation on each proposed solution can be helpful too.
+For example, asking AI to rate proposals using the Perfection Game approach is more accurate
+than simply asking for pros and cons.
 
 ### Maintain the direction
 
