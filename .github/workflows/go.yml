@@ -1,5 +1,9 @@
 name: Go
 
+permissions:
+  contents: read
+  actions: write
+
 on:
   push:
     branches:
@@ -15,7 +19,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.23'
+          go-version: '1.24'
       - name: Build
         working-directory: go
         run: go build -v ./...
