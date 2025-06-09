@@ -845,12 +845,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.15.19":
+"@types/node@npm:*":
   version: 22.15.19
   resolution: "@types/node@npm:22.15.19"
   dependencies:
     undici-types: "npm:~6.21.0"
   checksum: 10c0/8ef52fa1a91b1c8891616d46f3921a9f3c65ad1c6bb62db7899c8c28643c13bf9d607a2403b1e5aceb3e6fa6749efc9e0ba5c39618a4872da6946437b0edbfbe
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^22.15.30":
+  version: 22.15.30
+  resolution: "@types/node@npm:22.15.30"
+  dependencies:
+    undici-types: "npm:~6.21.0"
+  checksum: 10c0/ca330ac0e7fd502686d6df115fcc606aba46fd334220f749bbba2f639accdadcb23f7900603ceccdc8240be736739cad5c0b87c0fa92c9255a4dff245f07d664
   languageName: node
   linkType: hard
 
@@ -2523,7 +2532,7 @@ __metadata:
   dependencies:
     "@tsconfig/node22": "npm:^22.0.1"
     "@types/jest": "npm:^29.5.14"
-    "@types/node": "npm:^22.15.19"
+    "@types/node": "npm:^22.15.30"
     jest: "npm:^29.7.0"
     jest-junit: "npm:^16.0.0"
     ts-jest: "npm:^29.3.4"
