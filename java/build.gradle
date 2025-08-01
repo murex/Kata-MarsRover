@@ -2,7 +2,6 @@ plugins {
     id 'java'
     id 'java-library'
     id 'com.adarshr.test-logger' version '4.0.0'
-    id 'se.patrikerdes.use-latest-versions' version '0.2.18'
     id 'com.github.ben-manes.versions' version '0.52.0'
 }
 
@@ -18,7 +17,7 @@ repositories {
 
 dependencies {
     // JUnit 5
-    testImplementation("org.junit.jupiter:junit-jupiter:5.13.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.13.4")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     // Guava utility package
     implementation group: 'com.google.guava', name: 'guava', version: '33.4.8-jre'
