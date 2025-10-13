@@ -22,14 +22,14 @@
 
 set -u
 
+# ------------------------------------------------------------------------------
+# cmake directory structure and information
+# ------------------------------------------------------------------------------
+
 base_dir="$(cd "$(dirname -- "$0")" && pwd)"
 if [ -z "${CMAKEW_BASE_DIR+x}" ]; then CMAKEW_BASE_DIR="${base_dir}"; fi
 if [ -z "${CMAKEW_CACHE_DIR+x}" ]; then CMAKEW_CACHE_DIR="$(dirname "${base_dir}")/.cmake"; fi
 if [ -z "${CMAKEW_CMD+x}" ]; then CMAKEW_CMD="cmake"; fi
-
-# ------------------------------------------------------------------------------
-# cmake directory structure and information
-# ------------------------------------------------------------------------------
 
 CMAKEW_VERSION_FILE="${CMAKEW_BASE_DIR}/version.txt"
 
@@ -99,20 +99,36 @@ download_cmake() {
   # ----------------------------------------------------------------------------
   # 3) expand cmake archive
   # ----------------------------------------------------------------------------
+  # Note: we now selectively extract only the necessary files from cmake archive (e.g. bin and share directories).
+  # Help files are becoming really big and antivirus checks on Windows are slowing down the extraction process
+  # up to a point that it breaks the script due to crappy file permission handling by Windows OS.
 
   print_info "extracting cmake ${cmake_version}"
   case "${archive_extension}" in
   zip)
-    if ! unzip -q -K -o "${cmake_expected_archive_file}"; then
+    # Windows case -- selective extraction to bypass inefficiency of crappy OS combined with invasive antivirus
+    if ! unzip -q -K -o "${cmake_expected_archive_file}" "${cmake_expected_dir}/bin/*" "${cmake_expected_dir}/share/**/*"; then
       print_error "failed to expand ${cmake_expected_archive_file}"
       return 1
     fi
     ;;
   tar.gz)
-    if ! tar zxf "${cmake_expected_archive_file}"; then
-      print_error "failed to expand ${cmake_expected_archive_file}"
-      return 1
-    fi
+    case "${os}" in
+    "macos")
+      # With macos, we extract the entire archive (easier than handling directory tree specifics)
+      if ! tar zxf "${cmake_expected_archive_file}"; then
+        print_error "failed to expand ${cmake_expected_archive_file}"
+        return 1
+      fi
+      ;;
+    "linux"|*)
+      # With linux, we extract selectively like in Windows so that it can also run with WSL
+      if ! tar zxf "${cmake_expected_archive_file}" "${cmake_expected_dir}/bin" "${cmake_expected_dir}/share"; then
+        print_error "failed to expand ${cmake_expected_archive_file}"
+        return 1
+      fi
+      ;;
+    esac
     ;;
   *)
     print_error "archive format ${archive_extension} is currently not supported"

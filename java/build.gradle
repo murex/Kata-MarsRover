@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'java-library'
     id 'com.adarshr.test-logger' version '4.0.0'
-    id 'com.github.ben-manes.versions' version '0.52.0'
+    id 'com.github.ben-manes.versions' version '0.53.0'
 }
 
 java {
@@ -16,11 +16,13 @@ repositories {
 }
 
 dependencies {
-    // JUnit 5
-    testImplementation("org.junit.jupiter:junit-jupiter:5.13.4")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    // JUnit
+    testImplementation(platform('org.junit:junit-bom:6.0.0'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+    testRuntimeOnly('org.junit.platform:junit-platform-launcher')
+
     // Guava utility package
-    implementation group: 'com.google.guava', name: 'guava', version: '33.4.8-jre'
+    implementation("com.google.guava:guava:33.5.0-jre")
 }
 
 test {
@@ -52,4 +54,3 @@ testlogger {
     showFailedStandardStreams = true
     logLevel = 'lifecycle'
 }
-
