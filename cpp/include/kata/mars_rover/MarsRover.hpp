@@ -24,10 +24,7 @@ SOFTWARE.
 #include <kata/mars_rover/config.hpp>
 #include <iostream>
 
-namespace com {
-namespace murex {
-namespace kata {
-namespace mars_rover {
+namespace com::murex::kata::mars_rover {
 
 class MARS_ROVER_API MarsRover
 {
@@ -38,8 +35,5 @@ public:
 };
 
 
-} // namespace mars_rover
-} // namespace kata
-} // namespace murex
-} // namespace com
+} // namespace com::murex::kata::mars_rover
 

@@ -23,10 +23,7 @@ SOFTWARE.
 
 #include <kata/mars_rover/MarsRover.hpp>
 
-namespace com {
-namespace murex {
-namespace kata {
-namespace mars_rover {
+namespace com::murex::kata::mars_rover {
 
 MarsRover::MarsRover(const int x, const int y, const char direction)
 {
@@ -41,8 +38,5 @@ std::string  MarsRover::sendPosition() const
 	return "";
 }
 
-} // namespace mars_rover
-} // namespace kata
-} // namespace murex
-} // namespace com
+} // namespace com::murex::kata::mars_rover
 
